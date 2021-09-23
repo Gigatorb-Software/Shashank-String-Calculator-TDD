@@ -9,11 +9,9 @@ public class CalculatorTest {
     }
     @Test
     public void test(){
-        System.out.println("welcome to test");
+        System.out.println("test success");
 
     }
-
-
 
 //    @Test
     //public void testOneNumber() {
@@ -39,6 +37,9 @@ public class CalculatorTest {
 
     }
 
+    /**
+     * when multiple value passed
+     */
     @Test
     public void testCheckCommaSeperation(){
 
@@ -54,8 +55,8 @@ public class CalculatorTest {
     @Test
     public void testOtherDelimiter(){
         Calculator calculator=new Calculator();
-        double result =calculator.checkEmptyString("//;\n1;2");
-        assertEquals(3, result,0);
+        double result =calculator.checkEmptyString("//;\n2;2");
+        assertEquals(4, result,0);
     }
 
 
@@ -72,11 +73,27 @@ public class CalculatorTest {
             assertEquals(e.getMessage(), "Negatives not allowed: -1");
         }
         try {
-            Calculator.checkEmptyString("2,-4,3,-5");
+            Calculator.checkEmptyString("1,-1,2,-1");
         }
         catch (IllegalArgumentException e){
-            assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
+            assertEquals(e.getMessage(), "Negatives not allowed: -1,-1");
         }
+    }
+
+
+    /**
+     *
+     */
+    @Test
+    public void testOverThousand(){
+        Calculator calculator=new Calculator();
+        int result=calculator.checkEmptyString("1000,2") ;
+        assertEquals(2,result ,0);
+    }
+
+    @Test
+    public  void testDeleminatorValue(){
+//code
     }
 
 

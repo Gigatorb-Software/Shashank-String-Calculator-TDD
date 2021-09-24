@@ -1,37 +1,33 @@
 public class Calculator {
 
-
-
-        public static int checkEmptyString(String text){
-            if(text==null || text.length()==0){
+        public static int checkEmptyString(String InputText){
+            if(InputText==null || InputText.length()==0){
                 return 0;
             }
-
-
             else {
                String delimiter = ",";
 //                String[] res = delimiter.split("[,]", 0);
 //                for(String myStr: res) {
 //                    System.out.println(myStr);
-                if(text.matches("//(.*)\n(.*)")){
-                   delimiter = Character.toString(text.charAt(2));
-                 text = text.substring(4);
+                if(InputText.matches("//(.*)\n(.*)")){
+                   delimiter = Character.toString(InputText.charAt(2));
+                    InputText = InputText.substring(4);
 //
                 }
                 String strArr[] = null;
 
-                if(text.trim().startsWith("//")){
-                    String newStr = text.trim().replaceAll("//","");
+                if(InputText.trim().startsWith("//")){
+                    String newStr = InputText.trim().replaceAll("//","");
                     String delimiter1  = newStr.charAt(0)+"";
                     String subStr = newStr.substring(1);
                     subStr = subStr.replaceAll("\n",delimiter1);
                     strArr = subStr.split(delimiter1);
                 }
                 else{
-                    strArr = text.trim().replaceAll("\n",",")
+                    strArr = InputText.trim().replaceAll("\n",",")
                             .split(",");
                 }
-                String numList[] = splitNumbers(text, delimiter + "|\n");
+                String numList[] = splitNumbers(InputText, delimiter + "|\n");
                 return sumOfTotal(numList);
             }
         }

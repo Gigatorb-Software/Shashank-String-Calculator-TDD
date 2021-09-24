@@ -43,8 +43,9 @@ public class CalculatorTest {
     @Test
     public void testCheckCommaSeperation(){
 
+        int addThreeNumber=Calculator.checkEmptyString("1,2,3");
+        assertEquals(6,addThreeNumber,0 );
 
-        assertEquals(6, Calculator.checkEmptyString("1,2,3"));
     }
 
 
